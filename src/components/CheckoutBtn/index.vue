@@ -5,14 +5,12 @@ import { useOrderProducts } from '@/application/orderProducts'
 defineProps<{ text: string }>()
 
 const userStore = useUserStorage()
-const user = computed(() => userStore.user)
-
 const cartStorage = useCartStorage()
-
 const { orderProducts } = useOrderProducts()
 
 const handleCheckout = async () => {
-  await orderProducts(user?.value, cartStorage.cart)
+  if (!userStore.user?.id) return window.alert('請先登入！')
+  await orderProducts(userStore?.user, cartStorage.cart)
 }
 </script>
 <template>
