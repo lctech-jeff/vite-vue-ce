@@ -4,7 +4,7 @@ import type { User } from '@/domain/user'
 import type { Order } from '@/domain/order'
 import type { Cart } from '@/domain/cart'
 
-const userEmpty = {
+const userEmpty: User = {
   id: '',
   name: '',
   email: '',
