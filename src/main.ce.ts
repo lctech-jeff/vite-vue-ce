@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue'
-import HelloWorld from '@/components/HelloWorld.ce.vue'
+import CompEntry from '@/components/CompEntry.ce.vue'
 
-export const JHelloWorld = defineCustomElement(HelloWorld)
+export const JCompEntry = defineCustomElement(CompEntry)
 
-export function register(tagName = 'j-hello-world') {
-  customElements.define(tagName, JHelloWorld)
+export function register(tagName = 'j-vue-comp') {
+  customElements.define(tagName, JCompEntry)
 }

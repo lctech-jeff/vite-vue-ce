@@ -1,3 +1,5 @@
+/* 因為這個檔案不在 custom element 中，只會加在 head 上，不會影響 shadow dom，所以是 App.vue 開發時使用的 style */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

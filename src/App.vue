@@ -1,5 +1,7 @@
+<!-- 為了方便開發，開發時會以Vue component的方式載入。 -->
+
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.ce.vue';
+import CompEntry from '@/components/CompEntry.ce.vue'
 </script>
 
 <template>
@@ -11,7 +13,7 @@ import HelloWorld from '@/components/HelloWorld.ce.vue';
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <CompEntry />
 </template>
 
 <style scoped>
