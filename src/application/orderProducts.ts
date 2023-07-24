@@ -1,6 +1,6 @@
 import { User } from '@/domain/user'
-import { Cart } from '@//domain/cart'
-import { createOrder } from '@//domain/order'
+import { Cart } from '@/domain/cart'
+import { createOrder } from '@/domain/order'
 
 import { usePayment } from '@/services/paymentAdapter'
 import { useNotifier } from '@/services/notificationAdapter'
@@ -12,7 +12,8 @@ export function useOrderProducts() {
   const orderStorage = useOrdersStorage()
   const cartStorage = useCartStorage()
 
-  async function orderProducts(user: User, cart: Cart) {
+  async function orderProducts(user?: User, cart?: Cart) {
+    if (!user || !cart) return
     const order = createOrder(user, cart)
     const paid = await payment.tryPay(order.total)
     if (!paid) return notifier.notify('付款失敗囉 🤷')

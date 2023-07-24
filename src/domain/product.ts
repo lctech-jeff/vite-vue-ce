@@ -16,5 +16,8 @@ export const ingredients: Record<Ingredient, string> = {
 }
 
 export function totalPrice(products: Product[]): PriceCents {
+  if (!products || products.length === 0) {
+    return 0
+  }
   return products.reduce((total, { price }) => total + price, 0)
 }

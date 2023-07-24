@@ -1,37 +1,49 @@
+import { defineStore } from 'pinia'
 import { cookies } from '@/services/fakeData'
 import type { User } from '@/domain/user'
 import type { Order } from '@/domain/order'
 import type { Cart } from '@/domain/cart'
 
-const user = ref<User>()
-const cart = ref<Cart>({ products: [] })
-const orders = ref<Order[]>([])
+const userEmpty = {
+  id: '',
+  name: '',
+  email: '',
+  preferences: [],
+  allergies: [],
+}
 
-const updateUser = (userData: User) => (user.value = userData)
-const updateCart = (cartData: Cart) => (cart.value = cartData)
-const updateOrders = (ordersData: Order[]) => (orders.value = ordersData)
+export const useUserStore = defineStore('user', () => {
+  const user = ref<User>({ ...userEmpty })
+  const updateUser = (userData: User) => {
+    user.value = { ...userData } ?? { ...userEmpty }
+  }
 
-export function useUserStore() {
   return {
-    user: unref(user),
+    user,
     cookies,
     updateUser,
   }
-}
+})
 
-export function useCartStore() {
+export const useCartStore = defineStore('cart', () => {
+  const cart = ref<Cart>({ products: [] })
+  const updateCart = (cartData: Cart) => (cart.value = cartData)
+
   return {
-    cart: unref(cart),
+    cart,
     cookies,
     updateCart,
     emptyCart: () => updateCart({ products: [] }),
   }
-}
+})
 
-export function useOrderStore() {
+export const useOrderStore = defineStore('order', () => {
+  const orders = ref<Order[]>([])
+  const updateOrders = (ordersData: Order[]) => (orders.value = ordersData)
+  
   return {
     cookies,
-    orders: unref(orders),
+    orders,
     updateOrders,
   }
-}
+})

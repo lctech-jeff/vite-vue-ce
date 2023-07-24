@@ -1,9 +1,23 @@
 <script setup lang="ts">
+import { useUserStorage, useCartStorage } from '@/services/storageAdapter'
+import { useOrderProducts } from '@/application/orderProducts'
+
 defineProps<{ text: string }>()
+
+const userStore = useUserStorage()
+const user = computed(() => userStore.user)
+
+const cartStorage = useCartStorage()
+
+const { orderProducts } = useOrderProducts()
+
+const handleCheckout = async () => {
+  await orderProducts(user?.value, cartStorage.cart)
+}
 </script>
 <template>
   <div>
-    <button type="button">{{ text }}</button>
+    <button type="button" @click="handleCheckout">{{ text }}</button>
   </div>
 </template>
 
