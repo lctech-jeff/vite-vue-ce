@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import TsxComp from '@/components/TsxComp.vue'
-import ChildComp from '@/components/ChildComp.vue'
+import TsxComp from '@/components/TsxComp.ce.vue'
+import ChildComp from '@/components/ChildComp.ce.vue'
 
 defineProps<{ msg: string }>()
 
