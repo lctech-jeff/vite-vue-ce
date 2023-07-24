@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
-import { resolve } from 'path'
+import { fileURLToPath, URL } from 'url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,9 +21,15 @@ export default defineConfig({
       dts: './src/auto-imports.d.ts',
     }),
   ],
+  css: {
+    modules: {
+      generateScopedName: 'jeff'
+    },
+    devSourcemap: true,
+  },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   build: {
@@ -32,6 +38,9 @@ export default defineConfig({
       name: 'jeff-vue-ce',
       fileName: 'jeff-vue-ce',
     },
+    sourcemap: true,
+    minify: false,
+    cssCodeSplit: false,
   },
   define: {
     'process.env': process.env,

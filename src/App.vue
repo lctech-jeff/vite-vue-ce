@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HelloWorld from '@/components/HelloWorld.ce.vue';
+</script>
 
 <template>
   <div>
@@ -9,7 +11,7 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <j-hello-world msg="Vite + Vue" />
+  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>

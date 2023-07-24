@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import './main.ce.ts'
+import { register } from './main.ce.ts'
 
+if (import.meta.env.PROD) register()
 createApp(App).mount('#app')

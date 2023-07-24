@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import TsxComp from '@/components/TsxComp.ce.vue'
-import ChildComp from '@/components/ChildComp.ce.vue'
+import TsxComp from '@/components/TsxComp.vue'
+import ChildComp from '@/components/ChildComp.vue'
+import '@/assets/index.css'
 
 defineProps<{ msg: string }>()
-
 const count = ref(0)
+
+const isPROD = ref(import.meta.env.PROD)
 </script>
 
 <template>
+  <link v-if="isPROD" href="/dist/style.css" rel="stylesheet" />
+
   <TsxComp />
   <ChildComp />
   <h1 v-bind="$attrs">{{ msg }}</h1>
