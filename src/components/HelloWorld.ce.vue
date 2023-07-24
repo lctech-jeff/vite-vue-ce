@@ -1,14 +1,16 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
+import TsxComp from '@/components/TsxComp.vue'
+import ChildComp from '@/components/ChildComp.vue'
 
-defineProps({
-  msg: String,
-})
+defineProps<{ msg: string }>()
 
 const count = ref(0)
 </script>
 
 <template>
+  <TsxComp />
+  <ChildComp />
   <h1 v-bind="$attrs">{{ msg }}</h1>
 
   <div class="card">
