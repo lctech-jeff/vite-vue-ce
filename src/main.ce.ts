@@ -1,8 +1,11 @@
 import { defineCustomElement } from 'vue'
-import CompEntry from '@/components/CompEntry.ce.vue'
+import CheckoutBtn from '@/components/CheckoutBtn/Entry.ce.vue'
+import CheckoutPanel from '@/components/CheckoutPanel/Entry.ce.vue'
 
-export const JCompEntry = defineCustomElement(CompEntry)
+export const JCheckoutBtn = defineCustomElement(CheckoutBtn)
+export const JCheckoutPanel = defineCustomElement(CheckoutPanel)
 
-export function register(tagName = 'j-vue-comp') {
-  customElements.define(tagName, JCompEntry)
+export function register(tagPrefix = 'j') {
+  customElements.define(`${tagPrefix}-checkout-btn`, JCheckoutBtn)
+  customElements.define(`${tagPrefix}-checkout-panel`, JCheckoutPanel)
 }

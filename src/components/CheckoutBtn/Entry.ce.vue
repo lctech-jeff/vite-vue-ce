@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Counter from '@/components/Counter.vue'
+import CheckoutBtn from '@/components/CheckoutBtn/index.vue'
 import '@/assets/index.css'
 
 const isPROD = ref(import.meta.env.PROD)
@@ -10,5 +10,5 @@ const isPROD = ref(import.meta.env.PROD)
   裡面包含了子組件的 style 和這個檔案引入的 assets/index.css -->
   <link v-if="isPROD" href="/dist/style.css" rel="stylesheet" />
 
-  <Counter msg="Vite + Vue" />
+  <CheckoutBtn text="結帳按鈕" />
 </template>
