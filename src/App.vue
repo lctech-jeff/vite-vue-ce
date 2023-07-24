@@ -18,7 +18,9 @@ const login = () => {
   })
 }
 
-const logout = () => {
+const logout = async () => {
+  userStorage.clearUser()
+  await nextTick()
   window.location.href = '/'
 }
 </script>

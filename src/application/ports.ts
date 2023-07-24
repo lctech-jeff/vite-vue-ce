@@ -5,6 +5,7 @@ import { User, UserName } from '@/domain/user'
 export interface UserStorageService {
   user?: User
   updateUser(user: User): void
+  clearUser(): void
 }
 
 export interface CartStorageService {

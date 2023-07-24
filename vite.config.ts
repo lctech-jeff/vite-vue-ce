@@ -17,13 +17,13 @@ export default defineConfig({
     vueJsx(),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
-      imports: ['vue'],
+      imports: ['vue', '@vueuse/core'],
       dts: './src/auto-imports.d.ts',
     }),
   ],
   css: {
     modules: {
-      generateScopedName: 'jeff'
+      generateScopedName: 'jeff',
     },
     devSourcemap: true,
   },
