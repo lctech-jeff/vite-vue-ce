@@ -1,5 +1,5 @@
 import { UserName } from '@/domain/user'
-import { useAuth } from '@/services/authAdapter'
+import { useAuth } from '@/services/authAdapther'
 import { useUserStorage } from '@/services/storageAdapter'
 
 import { AuthenticationService, UserStorageService } from '@/application/ports'
