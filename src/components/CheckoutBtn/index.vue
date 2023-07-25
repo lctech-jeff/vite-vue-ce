@@ -15,7 +15,7 @@ const handleCheckout = async () => {
 </script>
 <template>
   <div>
-    <button type="button" @click="handleCheckout">{{ text }}</button>
+    <button type="button" @click="handleCheckout">{{ text }}&nbsp;({{ cartStorage.cart?.products.length }})</button>
   </div>
 </template>
 
