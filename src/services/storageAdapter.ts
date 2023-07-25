@@ -1,5 +1,10 @@
-import { CartStorageService, OrdersStorageService, UserStorageService } from '@/application/ports'
-import { useUserStore, useCartStore, useOrderStore } from '@/services/store'
+import {
+  UserStorageService,
+  CartStorageService,
+  OrdersStorageService,
+  ProductStorageService,
+} from '@/application/ports'
+import { useUserStore, useCartStore, useOrderStore, useProductStore } from '@/services/store'
 
 export function useUserStorage(): UserStorageService {
   return useUserStore()
@@ -11,4 +16,8 @@ export function useCartStorage(): CartStorageService {
 
 export function useOrdersStorage(): OrdersStorageService {
   return useOrderStore()
+}
+
+export function useProductStorage(): ProductStorageService {
+  return useProductStore()
 }

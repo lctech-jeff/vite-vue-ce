@@ -3,6 +3,7 @@
 <script setup lang="ts">
 import CheckoutBtn from '@/components/CheckoutBtn/Entry.ce.vue'
 import CheckoutPanel from '@/components/CheckoutPanel/Entry.ce.vue'
+import ProductList from '@/components/ProductList/Entry.ce.vue'
 import { useUserStorage } from '@/services/storageAdapter'
 
 const userStorage = useUserStorage()
@@ -28,6 +29,9 @@ const logout = async () => {
 <template>
   <CheckoutBtn />
   <CheckoutPanel />
+  <div class="product-list-wrapper">
+    <ProductList />
+  </div>
 
   <div>
     <button v-if="user?.id" type="button" class="btn-login" @click="logout">嗨！{{ user.name }}</button>
@@ -35,12 +39,15 @@ const logout = async () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .btn-login {
   border: 1px solid rgb(19, 19, 45);
   position: fixed;
   right: 5vh;
   top: 5vh;
   cursor: pointer;
+}
+.product-list-wrapper {
+  margin: 24px 0;
 }
 </style>

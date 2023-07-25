@@ -3,6 +3,7 @@ import { cookies } from '@/services/fakeData'
 import type { User } from '@/domain/user'
 import type { Order } from '@/domain/order'
 import type { Cart } from '@/domain/cart'
+import type { Product } from '@/domain/product'
 
 const userEmpty: User = {
   id: '',
@@ -31,7 +32,6 @@ export const useUserStore = defineStore('user', () => {
 
   return {
     user,
-    cookies,
     updateUser,
     clearUser: () => updateUser({ ...userEmpty }),
   }
@@ -54,7 +54,6 @@ export const useCartStore = defineStore('cart', () => {
 
   return {
     cart,
-    cookies,
     updateCart,
     emptyCart: () => updateCart({ products: [] }),
   }
@@ -75,8 +74,16 @@ export const useOrderStore = defineStore('order', () => {
   )
 
   return {
-    cookies,
     orders,
     updateOrders,
+  }
+})
+
+export const useProductStore = defineStore('product', () => {
+  const cookiesList = ref([...cookies])
+  const updateCookies = (cookies: Product[]) => (cookiesList.value = [...cookies])
+  return {
+    cookies,
+    updateCookies,
   }
 })

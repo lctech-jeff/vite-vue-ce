@@ -16,15 +16,94 @@
           background-color: #242424;
         }
       }
+
+      .btn-log {
+        border: 1px solid rgb(19, 19, 45);
+        position: fixed;
+        right: 5vh;
+        top: 5vh;
+        cursor: pointer;
+        display: none;
+        &.active {
+          display: inline-block;
+        }
+      }
     </style>
     <main>
-      <j-checkout-btn text="這是按鈕"></j-checkout-btn>
-      <j-checkout-panel title="這是標題"></j-checkout-panel>
+      <j-checkout-btn text="結帳"></j-checkout-btn>
+      <j-checkout-panel title="已送出訂單"></j-checkout-panel>
+      <j-product-list></j-product-list>
+
+      <div>
+        <button type="button" class="btn-log js-btn-logout js-is-login">登入中</button>
+        <button type="button" class="btn-log js-btn-login js-is-logout active">登入</button>
+      </div>
     </main>
 
     <script type="module">
       import { register } from '/dist/jeff-vue-ce.js'
       register()
+    </script>
+
+    <script>
+      let loginState = {
+        isLogin: false,
+        user: {},
+      }
+
+      function updateLoginStatus() {
+        function updateUser() {
+          const userInfoInStorage = localStorage.getItem('my-user')
+          if (userInfoInStorage) loginState.user = JSON.parse(userInfoInStorage)
+          loginState.isLogin = !!loginState.user.id
+        }
+
+        function updateLoginBtn({ isLogin } = { isLogin: false }) {
+          const elIsLogin = document.querySelector('.js-is-login')
+          elIsLogin.classList.toggle('active', isLogin)
+          const elIsLogout = document.querySelector('.js-is-logout')
+          elIsLogout.classList.toggle('active', !isLogin)
+        }
+
+        updateUser()
+        updateLoginBtn({ isLogin: loginState.isLogin })
+      }
+
+      const log = {
+        logout() {
+          localStorage.setItem(
+            'my-user',
+            JSON.stringify({
+              id: '',
+              name: '',
+              email: '',
+              preferences: [],
+              allergies: [],
+            })
+          )
+          setTimeout(() => (window.location.href = '/demo/index.html'), 200)
+        },
+        login() {
+          localStorage.setItem(
+            'my-user',
+            JSON.stringify({
+              id: '100001',
+              name: 'Jeff',
+              email: 'jeff@lctech.com',
+              preferences: [],
+              allergies: [],
+            })
+          )
+          setTimeout(() => (window.location.href = '/demo/index.html'), 200)
+        },
+      }
+
+      const btnLogin = document.querySelector('.js-btn-login')
+      btnLogin.addEventListener('click', log.login)
+      const btnLogout = document.querySelector('.js-btn-logout')
+      btnLogout.addEventListener('click', log.logout)
+
+      updateLoginStatus()
     </script>
   </body>
 </html>

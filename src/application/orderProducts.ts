@@ -13,7 +13,7 @@ export function useOrderProducts() {
   const cartStorage = useCartStorage()
 
   async function orderProducts(user?: User, cart?: Cart) {
-    if (!user || !cart) return
+    if (!user || !cart || !cart.products.length) return
     const order = createOrder(user, cart)
     const paid = await payment.tryPay(order.total)
     if (!paid) return notifier.notify('付款失敗囉 🤷')
