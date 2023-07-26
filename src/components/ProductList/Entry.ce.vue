@@ -3,6 +3,10 @@ import ProductList from '@/components/ProductList/index.vue'
 import '@/assets/index.css'
 
 const isPROD = ref(import.meta.env.PROD)
+
+defineOptions({
+  name: 'ProductList',
+})
 </script>
 
 <template>
@@ -10,5 +14,5 @@ const isPROD = ref(import.meta.env.PROD)
   裡面包含了子組件的 style 和這個檔案引入的 assets/index.css -->
   <link v-if="isPROD" href="/dist/style.css" rel="stylesheet" />
 
-  <ProductList />
+  <ProductList v-bind="$attrs" />
 </template>

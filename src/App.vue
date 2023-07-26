@@ -28,15 +28,9 @@ const logout = async () => {
 </script>
 
 <template>
-  <div class="my-6">
-    <CheckoutBtn />
-  </div>
-  <div class="my-6">
-    <CheckoutPanel />
-  </div>
-  <div class="my-6">
-    <ProductList />
-  </div>
+  <CheckoutBtn class="my-6" />
+  <CheckoutPanel class="my-6" />
+  <ProductList class="my-6" />
 
   <div>
     <Btn v-if="user?.id" class="btn" @click="logout">

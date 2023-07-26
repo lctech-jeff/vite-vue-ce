@@ -3,6 +3,10 @@ import Btn from '@/components/Btn/index.vue'
 import '@/assets/index.css'
 
 const isPROD = ref(import.meta.env.PROD)
+
+defineOptions({
+  name: 'Btn',
+})
 </script>
 
 <template>
