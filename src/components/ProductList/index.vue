@@ -5,21 +5,8 @@ import { useProductStore } from '@/services/store'
 const productStore = useProductStore()
 </script>
 <template>
-  <div class="product-list">
+  <div class="grid grid-cols-1 gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
     <Card v-for="item in productStore.cookies" :key="item.id" :product="item" />
   </div>
 </template>
-<style scoped>
-.product-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  column-gap: 24px;
-  row-gap: 36px;
-  @media screen and (width >= 600px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media screen and (width >= 992px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-</style>
+<style scoped></style>

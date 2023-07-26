@@ -1,6 +1,7 @@
 <!-- 為了方便開發，開發時會以Vue component的方式載入。 -->
 
 <script setup lang="ts">
+import Btn from '@/components/Btn/Entry.ce.vue'
 import CheckoutBtn from '@/components/CheckoutBtn/Entry.ce.vue'
 import CheckoutPanel from '@/components/CheckoutPanel/Entry.ce.vue'
 import ProductList from '@/components/ProductList/Entry.ce.vue'
@@ -27,27 +28,32 @@ const logout = async () => {
 </script>
 
 <template>
-  <CheckoutBtn />
-  <CheckoutPanel />
-  <div class="product-list-wrapper">
+  <div class="my-6">
+    <CheckoutBtn />
+  </div>
+  <div class="my-6">
+    <CheckoutPanel />
+  </div>
+  <div class="my-6">
     <ProductList />
   </div>
 
   <div>
-    <button v-if="user?.id" type="button" class="btn-login" @click="logout">嗨！{{ user.name }}</button>
-    <button v-else type="button" class="btn-login" @click="login">登入</button>
+    <Btn v-if="user?.id" class="btn" @click="logout">
+      <template #text>
+        <div>嗨！{{ user.name }}</div>
+      </template>
+    </Btn>
+    <Btn v-else class="btn" @click="login">
+      <template #text>
+        <div>登入</div>
+      </template>
+    </Btn>
   </div>
 </template>
 
 <style scoped>
-.btn-login {
-  border: 1px solid rgb(19, 19, 45);
-  position: fixed;
-  right: 5vh;
-  top: 5vh;
-  cursor: pointer;
-}
-.product-list-wrapper {
-  margin: 24px 0;
+:deep(.btn) {
+  @apply fixed right-[5vw] top-[5vh];
 }
 </style>

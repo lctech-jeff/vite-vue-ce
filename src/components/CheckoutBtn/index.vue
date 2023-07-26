@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Btn from '@/components/Btn/Entry.ce.vue'
 import { useUserStorage, useCartStorage } from '@/services/storageAdapter'
 import { useOrderProducts } from '@/application/orderProducts'
 
@@ -15,23 +16,16 @@ const handleCheckout = async () => {
 </script>
 <template>
   <div>
-    <button type="button" @click="handleCheckout">{{ text }}&nbsp;({{ cartStorage.cart?.products.length }})</button>
+    <Btn @click="handleCheckout">
+      <template #text>
+        <div>{{ text }}&nbsp;({{ cartStorage.cart?.products.length }})</div>
+      </template>
+    </Btn>
   </div>
 </template>
 
 <style scoped>
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  background-color: var(--bg-color);
-  cursor: pointer;
-  transition: border-color 0.25s;
-  &:hover {
-    border-color: #646cff;
-  }
+:deep(button) {
   &:focus,
   &:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;

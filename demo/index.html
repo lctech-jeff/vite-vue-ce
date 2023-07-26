@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,11 +24,9 @@
       }
 
       .btn-log {
-        border: 1px solid rgb(19, 19, 45);
         position: fixed;
         right: 5vh;
         top: 5vh;
-        cursor: pointer;
         display: none;
         &.active {
           display: inline-block;
@@ -43,8 +41,12 @@
       </div>
 
       <div>
-        <button type="button" class="btn-log js-btn-logout js-is-login">登入中</button>
-        <button type="button" class="btn-log js-btn-login js-is-logout active">登入</button>
+        <j-btn class="btn-log js-btn-logout js-is-login">
+          <div slot="text">登入中</div>
+        </j-btn>
+        <j-btn class="btn-log js-btn-login js-is-logout active">
+          <div slot="text">登入</div>
+        </j-btn>
       </div>
     </main>
 
