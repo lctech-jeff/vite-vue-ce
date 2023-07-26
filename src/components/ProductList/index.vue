@@ -12,8 +12,14 @@ const productStore = useProductStore()
 <style scoped>
 .product-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   column-gap: 24px;
   row-gap: 36px;
+  @media screen and (width >= 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (width >= 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>

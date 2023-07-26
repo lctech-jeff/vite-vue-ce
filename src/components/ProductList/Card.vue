@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import type { Product } from '@/domain/product'
+import { hasAllergy, hasPreference } from '@/domain/user'
 import { useAddToCart } from '@/application/addToCart'
 import { useUserStore } from '@/services/store'
 
-defineProps<{ product: Product }>()
+const props = defineProps<{ product: Product }>()
 
 const userStore = useUserStore()
 
 const { addToCart } = useAddToCart()
+
+const productHasPreference = computed(() => props.product.toppings.some(v => hasPreference(userStore.user, v)))
+const productHasAllergy = computed(() => props.product.toppings.some(v => hasAllergy(userStore.user, v)))
+const iconAfterTitle = computed(() => {
+  if (productHasAllergy.value) return '⚠️';
+  if (productHasPreference.value) return '👍'
+  return '';
+})
+
 </script>
 <template>
   <div class="product-card">
@@ -16,7 +26,7 @@ const { addToCart } = useAddToCart()
     </div>
     <div class="product-card__footer">
       <div class="product-card__footer__detail">
-        <div>{{ product.title }}</div>
+        <div>{{ product.title }}&nbsp;{{ iconAfterTitle }}</div>
         <div>{{ product.price }}</div>
       </div>
       <button type="button" @click="addToCart(userStore.user, product)">Add to cart</button>

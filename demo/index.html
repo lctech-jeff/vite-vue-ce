@@ -17,6 +17,12 @@
         }
       }
 
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 2.5vw;
+      }
+
       .btn-log {
         border: 1px solid rgb(19, 19, 45);
         position: fixed;
@@ -30,9 +36,11 @@
       }
     </style>
     <main>
-      <j-checkout-btn text="結帳"></j-checkout-btn>
-      <j-checkout-panel title="已送出訂單"></j-checkout-panel>
-      <j-product-list></j-product-list>
+      <div class="container">
+        <j-checkout-btn text="結帳"></j-checkout-btn>
+        <j-checkout-panel title="已送出訂單"></j-checkout-panel>
+        <j-product-list></j-product-list>
+      </div>
 
       <div>
         <button type="button" class="btn-log js-btn-logout js-is-login">登入中</button>
@@ -90,8 +98,8 @@
               id: '100001',
               name: 'Jeff',
               email: 'jeff@lctech.com',
-              preferences: [],
-              allergies: [],
+              preferences: ['cherry'],
+              allergies: ['peanuts'],
             })
           )
           setTimeout(() => (window.location.href = '/demo/index.html'), 200)

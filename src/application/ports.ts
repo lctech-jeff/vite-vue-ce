@@ -1,6 +1,6 @@
 import { Cart } from '@/domain/cart'
 import { Order } from '@/domain/order'
-import { User, UserName } from '@/domain/user'
+import { User } from '@/domain/user'
 import { Product } from '@/domain/product'
 
 export interface UserStorageService {
@@ -23,10 +23,6 @@ export interface OrdersStorageService {
 export interface ProductStorageService {
   cookies: Product[]
   updateCookies(cookies: Product[]): void
-}
-
-export interface AuthenticationService {
-  auth(name: UserName, email: Email): Promise<User>
 }
 
 export interface NotificationService {

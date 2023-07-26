@@ -11,7 +11,7 @@ const ordersStorage = useOrdersStorage()
     <div class="order-list">
       <div class="order-item" v-for="item in ordersStorage.orders" :key="item.created">
         <div>{{ new Date(item.created).toLocaleString() }}</div>
-        <div>{{ item.cart.products.map(v => v.title).join() }}</div>
+        <div>{{ item.cart.products.map(v => v.title).join(', ') }}</div>
       </div>
     </div>
   </div>

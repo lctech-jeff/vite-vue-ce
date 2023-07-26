@@ -14,8 +14,8 @@ const login = () => {
     id: '100001',
     name: 'Jeff',
     email: 'jeff@lctech.com',
-    preferences: [],
-    allergies: [],
+    preferences: ['cherry'],
+    allergies: ['peanuts'],
   })
 }
 
