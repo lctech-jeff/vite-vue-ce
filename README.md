@@ -1,7 +1,34 @@
-# Vue 3 + Vite
+# vite-vue-ce
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+vite-vue-ce 是前端整潔架構（Clean Architecture）與 web component (custom component) 的實作測試，基於 `Vue3` 和 `Vite`。
 
-## Recommended IDE Setup
+參考文章 [Clean Architecture on Frontend](https://bespoyasov.me/blog/clean-architecture-on-frontend/)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Installation
+
+使用 `PNPM`:
+
+```bash
+$ pnpm install
+```
+
+## Usage
+
+```bash
+
+# local run
+$ pnpm run dev
+
+# build to dist folder
+$ pnpm run build
+
+```
+
+## Main plugins
+
+`vue3`, `vite`, `@vueuse/core`, `pinia`, `tailwindcss`
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
