@@ -35,7 +35,7 @@
     </style>
     <main>
       <div class="container">
-        <j-checkout-btn text="結帳"></j-checkout-btn>
+        <j-checkout-btn text="結帳" id="j-checkout-btn"></j-checkout-btn>
         <j-checkout-panel title="已送出訂單"></j-checkout-panel>
         <j-product-list></j-product-list>
       </div>
@@ -114,6 +114,15 @@
       btnLogout.addEventListener('click', log.logout)
 
       updateLoginStatus()
+
+      const jCheckoutBtn = document.querySelector('#j-checkout-btn')
+
+      jCheckoutBtn.addEventListener('checkout-success', e => {
+        console.log('checkout-success', e.detail[0])
+      })
+      jCheckoutBtn.addEventListener('checkout-failure', e => {
+        console.log('checkout-failure', e.detail[0])
+      })
     </script>
   </body>
 </html>

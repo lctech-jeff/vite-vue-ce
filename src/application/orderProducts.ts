@@ -12,15 +12,19 @@ export function useOrderProducts() {
   const orderStorage = useOrdersStorage()
   const cartStorage = useCartStorage()
 
-  async function orderProducts(user?: User, cart?: Cart) {
-    if (!user || !cart || !cart.products.length) return
+  const orderProducts = async (user?: User, cart?: Cart): Promise<boolean> => {
+    if (!user || !cart || !cart.products.length) return false
     const order = createOrder(user, cart)
     const paid = await payment.tryPay(order.total)
-    if (!paid) return notifier.notify('付款失敗囉 🤷')
+    if (!paid) {
+      notifier.notify('付款失敗囉 🤷')
+      return false
+    }
 
     const { orders } = orderStorage
     orderStorage.updateOrders([...orders, order])
     cartStorage.emptyCart()
+    return true
   }
 
   return { orderProducts }

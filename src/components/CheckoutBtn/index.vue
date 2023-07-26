@@ -2,8 +2,17 @@
 import Btn from '@/components/Btn/Entry.ce.vue'
 import { useUserStorage, useCartStorage } from '@/services/storageAdapter'
 import { useOrderProducts } from '@/application/orderProducts'
+import { User } from '@/domain/user'
+import { Cart } from '@/domain/cart'
 
 defineProps<{ text: string }>()
+
+type CheckoutStatus = 'success' | 'failure'
+
+const emit = defineEmits<{
+  'checkout-success': [{ status: CheckoutStatus; user: User; cart: Cart }]
+  'checkout-failure': [{ status: CheckoutStatus }]
+}>()
 
 const userStore = useUserStorage()
 const cartStorage = useCartStorage()
@@ -11,7 +20,18 @@ const { orderProducts } = useOrderProducts()
 
 const handleCheckout = async () => {
   if (!userStore.user?.id) return window.alert('請先登入！')
-  await orderProducts(userStore?.user, cartStorage.cart)
+  const isSuccess = await orderProducts(userStore?.user, cartStorage.cart)
+  if (isSuccess) {
+    emit('checkout-success', {
+      status: 'success',
+      user: userStore?.user,
+      cart: cartStorage.cart,
+    })
+    return
+  }
+  emit('checkout-failure', {
+    status: 'failure',
+  })
 }
 </script>
 <template>

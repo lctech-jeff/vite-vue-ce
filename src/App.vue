@@ -25,10 +25,17 @@ const logout = async () => {
   await nextTick()
   window.location.href = '/'
 }
+
+const handleCheckoutSuccess = (payload: any[]) => {
+  console.log(payload)
+}
+const handleCheckoutFailure = (payload: any[]) => {
+  console.log(payload)
+}
 </script>
 
 <template>
-  <CheckoutBtn class="my-6" />
+  <CheckoutBtn class="my-6" @checkout-success="handleCheckoutSuccess" @checkout-failure="handleCheckoutFailure" />
   <CheckoutPanel class="my-6" />
   <ProductList class="my-6" />
 
