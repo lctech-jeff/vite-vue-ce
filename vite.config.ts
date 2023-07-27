@@ -22,9 +22,6 @@ export default defineConfig({
     }),
   ],
   css: {
-    modules: {
-      generateScopedName: 'jeff',
-    },
     devSourcemap: true,
   },
   resolve: {
@@ -40,7 +37,6 @@ export default defineConfig({
     },
     sourcemap: true,
     minify: false,
-    cssCodeSplit: false,
   },
   define: {
     'process.env': process.env,
