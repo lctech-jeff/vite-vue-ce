@@ -7,13 +7,6 @@ import { Cart } from '@/domain/cart'
 
 defineProps<{ text: string }>()
 
-type CheckoutStatus = 'success' | 'failure'
-
-const emit = defineEmits<{
-  'checkout-success': [{ status: CheckoutStatus; user: User; cart: Cart }]
-  'checkout-failure': [{ status: CheckoutStatus }]
-}>()
-
 const userStore = useUserStorage()
 const cartStorage = useCartStorage()
 const { orderProducts } = useOrderProducts()
@@ -33,14 +26,18 @@ const handleCheckout = async () => {
     status: 'failure',
   })
 }
+
+type CheckoutStatus = 'success' | 'failure'
+
+const emit = defineEmits<{
+  'checkout-success': [{ status: CheckoutStatus; user: User; cart: Cart }]
+  'checkout-failure': [{ status: CheckoutStatus }]
+}>()
+
 </script>
 <template>
   <div>
-    <Btn @click="handleCheckout">
-      <template #text>
-        <div>{{ text }}&nbsp;({{ cartStorage.cart?.products.length }})</div>
-      </template>
-    </Btn>
+    <Btn @click="handleCheckout">{{ text }}&nbsp;({{ cartStorage.cart?.products.length }})</Btn>
   </div>
 </template>
 

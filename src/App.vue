@@ -40,16 +40,8 @@ const handleCheckoutFailure = (payload: any[]) => {
   <ProductList class="my-6" />
 
   <div>
-    <Btn v-if="user?.id" class="btn" @click="logout">
-      <template #text>
-        <div>嗨！{{ user.name }}</div>
-      </template>
-    </Btn>
-    <Btn v-else class="btn" @click="login">
-      <template #text>
-        <div>登入</div>
-      </template>
-    </Btn>
+    <Btn v-if="user?.id" class="btn" @click="logout">嗨！{{ user.name }}</Btn>
+    <Btn v-else class="btn" @click="login">登入</Btn>
   </div>
 </template>
 

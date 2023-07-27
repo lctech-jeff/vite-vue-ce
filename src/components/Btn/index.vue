@@ -1,13 +1,11 @@
 <script setup lang="ts"></script>
 <template>
-  <div>
-    <button
-      type="button"
-      class="cursor-pointer rounded-lg border border-transparent bg-[var(--bg-color)] px-5 py-2.5 font-medium transition-[border-color] duration-[0.25s] hover:border-[#646cff]"
-    >
-      <slot name="text"></slot>
-    </button>
-  </div>
+  <button
+    type="button"
+    class="cursor-pointer rounded-lg border border-transparent bg-[var(--bg-color)] px-5 py-2.5 font-medium transition-[border-color] duration-[0.25s] hover:border-[#646cff]"
+  >
+    <slot></slot>
+  </button>
 </template>
 
 <style scoped>

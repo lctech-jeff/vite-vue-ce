@@ -34,11 +34,7 @@ const iconAfterTitle = computed(() => {
         <div>{{ product.title }}&nbsp;{{ iconAfterTitle }}</div>
         <div>{{ product.price }}</div>
       </div>
-      <Btn @click="addToCart(userStore.user, product)">
-        <template #text>
-          <div>加入購物車</div>
-        </template>
-      </Btn>
+      <Btn @click="addToCart(userStore.user, product)">加入購物車</Btn>
     </div>
   </div>
 </template>
