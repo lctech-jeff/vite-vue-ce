@@ -83,7 +83,7 @@ export const useProductStore = defineStore('product', () => {
   const cookiesList = ref([...cookies])
   const updateCookies = (cookies: Product[]) => (cookiesList.value = [...cookies])
   return {
-    cookies,
+    cookies: cookiesList,
     updateCookies,
   }
 })
