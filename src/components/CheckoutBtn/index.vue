@@ -13,18 +13,20 @@ const { orderProducts } = useOrderProducts()
 
 const handleCheckout = async () => {
   if (!userStore.user?.id) return window.alert('請先登入！')
-  const isSuccess = await orderProducts(userStore?.user, cartStorage.cart)
-  if (isSuccess) {
+  try {
+    const isSuccess = await orderProducts(userStore?.user, cartStorage.cart)
+    if (!isSuccess) throw new Error()
     emit('checkout-success', {
       status: 'success',
       user: userStore?.user,
       cart: cartStorage.cart,
     })
-    return
+  } catch (e) {
+    console.log(e)
+    emit('checkout-failure', {
+      status: 'failure',
+    })
   }
-  emit('checkout-failure', {
-    status: 'failure',
-  })
 }
 
 type CheckoutStatus = 'success' | 'failure'
@@ -33,7 +35,6 @@ const emit = defineEmits<{
   'checkout-success': [{ status: CheckoutStatus; user: User; cart: Cart }]
   'checkout-failure': [{ status: CheckoutStatus }]
 }>()
-
 </script>
 <template>
   <div>

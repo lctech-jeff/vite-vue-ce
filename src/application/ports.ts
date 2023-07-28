@@ -4,7 +4,7 @@ import { User } from '@/domain/user'
 import { Product } from '@/domain/product'
 
 export interface UserStorageService {
-  user?: User
+  user: User
   updateUser(user: User): void
   clearUser(): void
 }

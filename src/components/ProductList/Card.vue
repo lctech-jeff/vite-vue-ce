@@ -3,16 +3,17 @@ import Btn from '@/components/Btn/Entry.ce.vue'
 import type { Product } from '@/domain/product'
 import { hasAllergy, hasPreference } from '@/domain/user'
 import { useAddToCart } from '@/application/addToCart'
-import { useUserStore } from '@/services/store'
+import { useUserStorage } from '@/services/storageAdapter'
 
 const props = defineProps<{ product: Product }>()
 
-const userStore = useUserStore()
+const userStore = useUserStorage()
+const user = computed(() => userStore.user)
 
 const { addToCart } = useAddToCart()
 
-const productHasPreference = computed(() => props.product.toppings.some(v => hasPreference(userStore.user, v)))
-const productHasAllergy = computed(() => props.product.toppings.some(v => hasAllergy(userStore.user, v)))
+const productHasPreference = computed(() => props.product.toppings.some(v => hasPreference(user.value, v)))
+const productHasAllergy = computed(() => props.product.toppings.some(v => hasAllergy(user.value, v)))
 const iconAfterTitle = computed(() => {
   if (productHasAllergy.value) return '⚠️'
   if (productHasPreference.value) return '👍'
