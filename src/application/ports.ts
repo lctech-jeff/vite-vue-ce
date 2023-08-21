@@ -47,6 +47,6 @@ export interface ValidatorService {
   hasError: globalThis.Ref<Boolean>
   isValid: globalThis.Ref<Boolean>
   errorMsg: globalThis.Ref<String>
+  setValidate: (payload: { isValid: boolean; errorMsg: string }) => void
   resetValidation: () => void
-  setValidate: ({ isValid, errorMsg }: { isValid: boolean; errorMsg: string }) => void
 }
