@@ -34,13 +34,13 @@ export interface PaymentService {
 }
 
 /**
- * 驗證服務
+ * 驗證狀態 服務
  * @interface ValidatorService
  *
  * @param {boolean} hasError - 經過驗證 && 有錯誤
  * @param {boolean} isValid - 經過驗證 && 無錯誤
  * @param {boolean} errorMsg - 當前錯誤訊息
- * @function resetValidation - 重置驗證
+ * @function resetValidation - 重置驗證狀態
  * @function setValidate - 設定驗證結果
  */
 export interface ValidatorService {
@@ -48,5 +48,5 @@ export interface ValidatorService {
   isValid: globalThis.Ref<Boolean>
   errorMsg: globalThis.Ref<String>
   resetValidation: () => void
-  setValidate: (isValid: boolean, errorMsg: string) => void
+  setValidate: ({ isValid, errorMsg }: { isValid: boolean; errorMsg: string }) => void
 }

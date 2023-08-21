@@ -1,32 +1,32 @@
 import { ValidatorService } from '@/application/ports'
 
 /**
- * 客製化 驗證服務
+ * 驗證狀態
  * @example
  * const { hasError, isValid, errorMsg, setValidate, resetValidation } = useValidation()
  */
 export const useValidation = (): ValidatorService => {
   const _hasValidated = ref(false)
-  const _isValidValue = ref(false)
+  const _isValid = ref(false)
   const _errorMsg = ref('')
 
   const hasError = computed(() => {
-    return _hasValidated.value && !_isValidValue.value
+    return _hasValidated.value && !_isValid.value
   })
 
   const isValid = computed(() => {
-    return _hasValidated.value && _isValidValue.value
+    return _hasValidated.value && _isValid.value
   })
 
-  const setValidate = (isValid: boolean, errorMsg: string) => {
+  const setValidate = ({ isValid, errorMsg }: { isValid: boolean; errorMsg: string }) => {
     _hasValidated.value = true
-    _isValidValue.value = isValid
+    _isValid.value = isValid
     _errorMsg.value = errorMsg
   }
 
   const resetValidation = () => {
     _hasValidated.value = false
-    _isValidValue.value = false
+    _isValid.value = false
     _errorMsg.value = ''
   }
 
