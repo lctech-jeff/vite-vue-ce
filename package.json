@@ -1,6 +1,5 @@
 {
   "name": "vite-vue-ce",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "files": [
