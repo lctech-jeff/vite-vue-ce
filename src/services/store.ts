@@ -16,7 +16,7 @@ const userEmpty: User = {
 export const useUserStore = defineStore('user', () => {
   const user = ref<User>({ ...userEmpty })
   const updateUser = (userData: User) => {
-    user.value = { ...userData } ?? { ...userEmpty }
+    user.value = userData ? { ...userData } : { ...userEmpty }
   }
 
   const STORAGE_KEY = 'my-user'
